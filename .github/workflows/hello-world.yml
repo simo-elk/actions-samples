@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   greet:
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Show message hello world
       - run: echo "Hello world, Simo"
