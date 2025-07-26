@@ -1,0 +1,23 @@
+name: Multiple jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print job name
+        run: echo "Job 1 $RUNNER_OS - $GITHUB_WORKSPACE"
+
+  job-2:
+    runs-on: macos-latest
+    steps:
+      - name: Print job name
+        run: echo "Job 2"
+
+  job-3:
+    runs-on: windows-latest
+    steps:
+      - name: Print job name
+        run: echo "Job 3"
