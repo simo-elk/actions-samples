@@ -1,0 +1,24 @@
+name: Manual-Dispatcher
+
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: text field label
+        required: true
+      build:
+        description: Build Type
+        type: choice
+        default: release
+        options: 
+          - debug
+          - release
+
+jobs:
+  build:
+    runs-on: ubuntu_latest
+    steps:
+      - name: Displaying input values
+        run: |
+          echo "Label: ${{ inputs.text }}"
+          echo "Build: ${{ inputs.build }}"
