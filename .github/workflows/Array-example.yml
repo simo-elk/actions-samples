@@ -1,0 +1,16 @@
+name: Array Example
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false # even if one of the runs fails, the others are not cancelled: all the combinations in your matrix will continue to run to completion. Thus, you get the complete result of each variant, even if one has already failed.
+      matrix: 
+        OS: [windows-latest, ubuntu-latest, macos-latest]
+    name: one-dimensional matrix
+    runs-on: ${{ matrix.OS }}
+    steps:
+      - name: Print OS
+        run: echo "We're using the OS ${{ matrix.OS }}"
