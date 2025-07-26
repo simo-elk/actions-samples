@@ -1,0 +1,10 @@
+name: hello world
+
+on: [push]
+
+jobs:
+  greet:
+    runs-on: ububtu-latest
+    steps:
+      - name: Show message hello world
+      - run: echo "Hello world, Simo"
