@@ -1,0 +1,15 @@
+name: Passing values with output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Type a variable
+        id: generate-value
+        run: echo "MY_VALUE=simo" >> "$GITHUB_OUTPUT"
+
+      - name: Get variable
+        run: echo "${{ steps.generate-value.outputs.MY_VALUE }}"
