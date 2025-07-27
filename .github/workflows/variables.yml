@@ -18,3 +18,21 @@ jobs:
           echo 'Another way to get/display the value of the variableis : ${{ env.global_variable }}'
           echo 'We could also set variables at the level of single job ${{ env.job_variable }}'
           echo Other way: $job_variable
+          echo 'Or variables at the level of step like this: ${{ env.step }}'
+        env:
+          step_variable: VARIABLE STEP
+
+      - name: second step of job-1
+        run: |
+          echo The value of the global variable is: $global_variable
+          echo 'The second step can access to job_variable: ${{ env.job_variable }}'
+          echo 'The second step doesn't has access to the step_variable variable from the first step'
+
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step of job-1 
+        run: |
+          echo The value of the global variable is: $global_variable
+          echo 'The second step doesn't has access to the job_variable variable from the job-1'
+          echo 'The second step doesn't has access to the step_variable variable from first step of job-1'
