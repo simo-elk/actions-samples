@@ -1,0 +1,17 @@
+name: Environment variable
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Configure environment variable
+        run: echo "MY_VARIABLE=Hello world, simo" >> $GITHUB_ENV
+
+      - name: run JS file
+        run: node code/main.js
