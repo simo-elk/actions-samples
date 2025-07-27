@@ -1,0 +1,14 @@
+name: Workflow commands
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warning & error messages
+        run: |
+          echo "Normal message"
+          echo "::warning::Warning message"
+          echo "::error::Error message"
