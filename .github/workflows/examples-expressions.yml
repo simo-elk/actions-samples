@@ -1,0 +1,20 @@
+name: Examples of expressions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        SO: [windows-latest, ubuntu-latest, macos-latest]
+    name: One-dimensional matrix
+    runs-on: ${{ matrix.SO }}
+    steps:
+      - name: Step for Windows only
+        if: ${{ matrix.SO == 'windows-latest' }}
+        run: echo "This only runs on Windows"
+
+      - name: for all the OSs
+        run: echo "Common step for all OSs"
